@@ -23,7 +23,9 @@
                 android:value="com.epicodus.dentistfinder.MainActivity">
             </meta-data>/>
         </activity>
-        <activity android:name=".DentistDetailActivity">
+        <activity
+            android:name=".DentistDetailActivity"
+            android:label="Results">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.dentistfinder.DentistsActivity">
