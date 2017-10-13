@@ -43,10 +43,8 @@ public class DentistsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String dentist = ((TextView)view).getText().toString();
-                String address = ((TextView)view).getText().toString();
                 Intent intent = new Intent(DentistsActivity.this, DentistDetailActivity.class);
                 intent.putExtra("dentist", dentist);
-                intent.putExtra("address", address);
                 startActivity(intent);
             }
         });
