@@ -23,20 +23,30 @@ public class DentistsActivity extends AppCompatActivity {
             "Alexander Kussad",
             };
 
+    private String[] address = new String []{
+            "Vancouver, WA",
+            "Vancouver, WA",
+            "Vancouver, WA",
+            "Vancouver, WA",
+            "Vancouver, WA",
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dentists);
 
         ButterKnife.bind(this);
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, dentists);
+        DentistArrayAdapter adapter = new DentistArrayAdapter(this, android.R.layout.simple_list_item_1, dentists, address);
         mDentistsListView.setAdapter(adapter);
         mDentistsListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String dentist = ((TextView)view).getText().toString();
+                String address = ((TextView)view).getText().toString();
                 Intent intent = new Intent(DentistsActivity.this, DentistDetailActivity.class);
                 intent.putExtra("dentist", dentist);
+                intent.putExtra("address", address);
                 startActivity(intent);
             }
         });
