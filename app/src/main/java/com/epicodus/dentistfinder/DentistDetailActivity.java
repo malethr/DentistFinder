@@ -21,7 +21,6 @@ public class DentistDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String dentist = intent.getStringExtra("dentist");
-        String address = intent.getStringExtra("address");
         mNameAddTextView.setText(dentist);
     }
 }
