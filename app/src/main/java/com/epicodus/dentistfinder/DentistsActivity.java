@@ -9,9 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class DentistsActivity extends AppCompatActivity {
-    private TextView mResultsTextView;
-    private ListView mDentistsListView;
+    @Bind(R.id.resultsTextView) TextView mResultsTextView;
+    @Bind(R.id.dentistsListView) ListView mDentistsListView;
     private String[] dentists = new String[] {
             "Matthew Aldridge",
             "Benjamin Thomas",
@@ -20,21 +23,19 @@ public class DentistsActivity extends AppCompatActivity {
             "Alexander Kussad",
             };
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dentists);
 
-        mResultsTextView = (TextView) findViewById(R.id.resultsTextView);
-        mDentistsListView = (ListView) findViewById(R.id.dentistsListView);
+        ButterKnife.bind(this);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, dentists);
         mDentistsListView.setAdapter(adapter);
         mDentistsListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String dentist = ((TextView)view).getText().toString();
-                Intent intent = new Intent(DentistsActivity.this, DentistDetailActivity.this);
+                Intent intent = new Intent(DentistsActivity.this, DentistDetailActivity.class);
                 intent.putExtra("dentist", dentist);
                 startActivity(intent);
             }

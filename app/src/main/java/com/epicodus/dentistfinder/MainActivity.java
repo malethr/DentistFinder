@@ -9,19 +9,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
-    private Button mFindButton;
-    private EditText mInputEditText;
-    private TextView mDentistFinderTextView;
+    @Bind(R.id.findButton) Button mFindButton;
+    @Bind(R.id.inputEditText) EditText mInputEditText;
+    @Bind(R.id.dentistFinderTextView) TextView mDentistFinderTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mInputEditText = (EditText) findViewById(R.id.inputEditText);
-        mFindButton = (Button) findViewById(R.id.findButton);
-        mDentistFinderTextView = (TextView) findViewById(R.id.dentistFinderTextView);
+        ButterKnife.bind(this);
         Typeface ostrichFont = Typeface.createFromAsset(getAssets(), "fonts/ostrich-regular.ttf");
         mDentistFinderTextView.setTypeface(ostrichFont);
         mFindButton.setOnClickListener(new View.OnClickListener() {
