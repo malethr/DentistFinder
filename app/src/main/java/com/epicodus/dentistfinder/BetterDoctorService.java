@@ -11,7 +11,10 @@ public class BetterDoctorService {
     public static void findDentists(String location, Callback callback) {
 
         OkHttpClient client = new OkHttpClient.Builder().build();
-        String url = Constants.BETTER_DOCTOR_URL;
+
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.BETTER_DOCTOR_URL).newBuilder();
+        urlBuilder.addQueryParameter(Constants.BETTER_DOCTOR_QUERY_PARAMETER, location);
+        String url = urlBuilder.build().toString();
 
         Request request = new Request.Builder().url(url).build();
 
