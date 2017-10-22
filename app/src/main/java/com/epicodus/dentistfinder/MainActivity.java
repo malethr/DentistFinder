@@ -22,8 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String apiKey = "9e18d0234fa6476718599583032121ca";
-        String dentistUrl = "https://api.betterdoctor.com/2016-03-01/doctors?query=${userInput}&location=wa-vancouver&sort=best-match-asc&skip=0&limit=50&user_key=9e18d0234fa6476718599583032121ca";
+
 
         ButterKnife.bind(this);
         Typeface ostrichFont = Typeface.createFromAsset(getAssets(), "fonts/ostrich-regular.ttf");
