@@ -11,10 +11,10 @@
         android:background="@color/colorPrimary">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
             android:id="@+id/dentistImageView"
-            android:scaleType="centerCrop" />
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -105,7 +105,7 @@
                 android:layout_alignParentBottom="true"
                 android:background="@color/colorAccent"
                 android:text="Save Dentist"
-                android:textColor="@color/colorTextIcons"
+                android:textColor="@color/colorPrimaryText"
                 android:textSize="15sp"/>
         </RelativeLayout>
     </LinearLayout>
