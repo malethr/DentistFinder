@@ -21,25 +21,8 @@ import okhttp3.Response;
 public class DentistsActivity extends AppCompatActivity {
 
     public static final String TAG = DentistsActivity.class.getSimpleName();
-    @Bind(R.id.resultsTextView)
-    TextView mResultsTextView;
-    @Bind(R.id.dentistsListView)
-    ListView mDentistsListView;
-    private String[] dentists = new String[]{
-            "Matthew Aldridge",
-            "Benjamin Thomas",
-            "Joshua Hiller",
-            "Clinton Harrel",
-            "Alexander Kussad",
-    };
-
-    private String[] address = new String[]{
-            "Vancouver, WA",
-            "Vancouver, WA",
-            "Vancouver, WA",
-            "Vancouver, WA",
-            "Vancouver, WA",
-    };
+    @Bind(R.id.resultsTextView) TextView mResultsTextView;
+    @Bind(R.id.dentistsListView) ListView mDentistsListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,5 +68,5 @@ public class DentistsActivity extends AppCompatActivity {
                 }
             }
         });
-    };
+    }
 }
