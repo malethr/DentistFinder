@@ -27,6 +27,8 @@ _Ask user's input for either zip code, dentist name or insurance then program wi
 * _Able to use google maps and can access user's location using geolocation_
 * _Provide a login and sign-up form._
 * _Can accept reviews from patients and can accept bookings._
+* _Will add more detail information (ex. Bio)_
+
 
 ## Setup/Installation Requirements
 * _Clone this repository_
