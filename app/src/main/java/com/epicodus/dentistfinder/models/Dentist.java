@@ -1,4 +1,4 @@
-package com.epicodus.dentistfinder;
+package com.epicodus.dentistfinder.models;
 
 import java.util.ArrayList;
 

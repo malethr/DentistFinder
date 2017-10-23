@@ -1,10 +1,12 @@
-package com.epicodus.dentistfinder;
+package com.epicodus.dentistfinder.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.epicodus.dentistfinder.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorTextIcons"
     android:padding="5dp"
-    tools:context="com.epicodus.dentistfinder.DentistsActivity">
+    tools:context="com.epicodus.dentistfinder.ui.DentistsActivity">
 
     <TextView
         android:id="@+id/resultsTextView"

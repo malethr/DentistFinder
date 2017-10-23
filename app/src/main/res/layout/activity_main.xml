@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="5dp"
     android:background="@color/colorPrimaryDark"
-    tools:context="com.epicodus.dentistfinder.MainActivity">
+    tools:context="com.epicodus.dentistfinder.ui.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"

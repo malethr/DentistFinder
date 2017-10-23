@@ -12,25 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DentistsActivity">
+        <activity android:name=".ui.DentistsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.dentistfinder.MainActivity">
+                android:value="com.epicodus.dentistfinder.ui.MainActivity">
             </meta-data>/>
         </activity>
         <activity
-            android:name=".DentistDetailActivity"
+            android:name=".ui.DentistDetailActivity"
             android:label="Detail">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.dentistfinder.DentistsActivity">
+                android:value="com.epicodus.dentistfinder.ui.DentistsActivity">
             </meta-data>/>
         </activity>
     </application>

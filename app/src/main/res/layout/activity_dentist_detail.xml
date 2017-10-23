@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="5dp"
-    tools:context="com.epicodus.dentistfinder.DentistDetailActivity">
+    tools:context="com.epicodus.dentistfinder.ui.DentistDetailActivity">
 
     <ImageView
         android:id="@+id/imageView2"

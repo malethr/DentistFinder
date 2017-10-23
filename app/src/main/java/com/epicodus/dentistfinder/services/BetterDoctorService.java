@@ -1,4 +1,7 @@
-package com.epicodus.dentistfinder;
+package com.epicodus.dentistfinder.services;
+
+import com.epicodus.dentistfinder.Constants;
+import com.epicodus.dentistfinder.models.Dentist;
 
 import org.json.JSONArray;
 import org.json.JSONException;
