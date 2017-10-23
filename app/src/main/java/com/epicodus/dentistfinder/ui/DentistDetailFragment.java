@@ -52,7 +52,6 @@ public class DentistDetailFragment extends Fragment {
         mDentistNameTextView.setText(mDentist.getName());
         mStreetTextView.setText(mDentist.getStreet() + ", " + mDentist.getCity() + ", " + mDentist.getState() + ", " + mDentist.getZip());
         mWebsiteTextView.setText(mDentist.getWebsite());
-        mPhoneTextView.setText(mDentist.getPhone().toString());
 
         return view;
     }

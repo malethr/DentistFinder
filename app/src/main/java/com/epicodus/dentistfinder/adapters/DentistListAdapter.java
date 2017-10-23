@@ -1,6 +1,7 @@
 package com.epicodus.dentistfinder.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,10 @@ import android.widget.TextView;
 
 import com.epicodus.dentistfinder.R;
 import com.epicodus.dentistfinder.models.Dentist;
+import com.epicodus.dentistfinder.ui.DentistDetailActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -43,7 +47,7 @@ public class DentistListAdapter extends RecyclerView.Adapter<DentistListAdapter.
         return mDentists.size();
     }
 
-    public class DentistViewHolder extends RecyclerView.ViewHolder {
+    public class DentistViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @Bind(R.id.dentistImageView) ImageView mDentistImageView;
         @Bind(R.id.dentistNameTextView) TextView mDentistNameTextView;
         @Bind(R.id.streetTextView) TextView mStreetTextView;
@@ -55,6 +59,8 @@ public class DentistListAdapter extends RecyclerView.Adapter<DentistListAdapter.
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
+
         }
 
         public void bindDentist(Dentist dentist) {
@@ -62,6 +68,15 @@ public class DentistListAdapter extends RecyclerView.Adapter<DentistListAdapter.
             mDentistNameTextView.setText(dentist.getName());
             mWebsiteTextView.setText(dentist.getWebsite());
             mStreetTextView.setText(dentist.getStreet());
+        }
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, DentistDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("restaurants", Parcels.wrap(mDentists));
+            mContext.startActivity(intent);
         }
     }
 

@@ -15,6 +15,8 @@ public class Dentist {
     private String state;
     private String zip;
 
+    public Dentist(){}
+
     public Dentist(String name, String website, String imageUrl, ArrayList<String> phone, String street, String city, String state, String zip) {
         this.name = name;
         this.website = website;

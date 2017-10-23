@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/restaurantNameTextView"
+                android:layout_below="@+id/dentistNameTextView"
                 android:text="Brunch, American"
                 android:textColor="@color/colorSecondaryText"
                 android:textStyle="italic"/>
