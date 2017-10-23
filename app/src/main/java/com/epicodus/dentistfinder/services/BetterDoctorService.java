@@ -28,8 +28,7 @@ public class BetterDoctorService {
         String url = urlBuilder.build().toString();
 
         Request request = new Request.Builder()
-                .url(url)
-                .build();
+                .url(url).build();
 
         Call call = client.newCall(request);
         call.enqueue(callback);
@@ -55,11 +54,8 @@ public class BetterDoctorService {
                 ArrayList<String> phone = new ArrayList<>();
                 JSONArray phoneJSON = dentistJSON.getJSONArray("practices").getJSONObject(0).getJSONArray("phones");
                 for (int j = 0; j < phoneJSON.length(); j++) {
-                    String type = phoneJSON.getJSONObject(j).getString("type");
-                    if(type == "landline"){
-                        String jphone = phoneJSON.getJSONObject(j).getString("phone");
-                        phone.add(jphone);
-                    }
+                    String jphone = phoneJSON.getJSONObject(j).getString("number");
+                    phone.add(jphone);
                 }
                 String city = dentistJSON.getJSONArray("practices").getJSONObject(0).getJSONObject("visit_address").getString("city");
                 String zip = dentistJSON.getJSONArray("practices").getJSONObject(0).getJSONObject("visit_address").getString("zip");

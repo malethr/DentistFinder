@@ -3,6 +3,7 @@ package com.epicodus.dentistfinder.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ public class DentistDetailFragment extends Fragment {
     @Bind(R.id.dentistImageView) ImageView mDentistImageView;
     @Bind(R.id.dentistNameTextView) TextView mDentistNameTextView;
     @Bind(R.id.websiteTextView) TextView mWebsiteTextView;
-    @Bind(R.id.streetTextView) TextView mStreetTextView;
+    @Bind(R.id.addressTextView) TextView mStreetTextView;
     @Bind(R.id.phoneTextView) TextView mPhoneTextView;
 
     private Dentist mDentist;
@@ -52,7 +53,9 @@ public class DentistDetailFragment extends Fragment {
         mDentistNameTextView.setText(mDentist.getName());
         mStreetTextView.setText(mDentist.getStreet() + ", " + mDentist.getCity() + ", " + mDentist.getState() + ", " + mDentist.getZip());
         mWebsiteTextView.setText(mDentist.getWebsite());
-
+        String phoneNum = TextUtils.join("",mDentist.getPhone());
+        phoneNum = "("+phoneNum.substring(0,3)+")" + phoneNum.substring(3,6)+"-"+ phoneNum.substring(6, phoneNum.length());
+        mPhoneTextView.setText(phoneNum);
         return view;
     }
 

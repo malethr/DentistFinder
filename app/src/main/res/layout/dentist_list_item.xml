@@ -5,7 +5,7 @@
               android:layout_height="wrap_content">
 
     <ImageView
-        android:layout_width="130dp"
+        android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/dentistImageView"
         android:src="@drawable/logo"
@@ -48,7 +48,7 @@
                 android:id="@+id/websiteTextView"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:textColor="@color/colorAccent"/>
+                android:textColor="@color/colorPrimaryDark"/>
         </RelativeLayout>
     </LinearLayout>
 

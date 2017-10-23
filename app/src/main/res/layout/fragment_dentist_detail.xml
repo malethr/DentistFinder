@@ -43,7 +43,6 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/dentistNameTextView"
-                android:text="Brunch, American"
                 android:textColor="@color/colorSecondaryText"
                 android:textStyle="italic"/>
         </RelativeLayout>
@@ -80,7 +79,6 @@
                     android:layout_height="wrap_content"
                     android:text="View Online"
                     android:id="@+id/websiteTextView"
-                    android:drawablePadding="4dp"
                     android:textColor="@color/colorTextIcons"
                     android:textSize="15sp"
                     android:textStyle="bold"

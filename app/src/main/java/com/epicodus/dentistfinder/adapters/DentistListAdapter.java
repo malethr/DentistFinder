@@ -75,7 +75,7 @@ public class DentistListAdapter extends RecyclerView.Adapter<DentistListAdapter.
             int itemPosition = getLayoutPosition();
             Intent intent = new Intent(mContext, DentistDetailActivity.class);
             intent.putExtra("position", itemPosition);
-            intent.putExtra("restaurants", Parcels.wrap(mDentists));
+            intent.putExtra("dentists", Parcels.wrap(mDentists));
             mContext.startActivity(intent);
         }
     }
