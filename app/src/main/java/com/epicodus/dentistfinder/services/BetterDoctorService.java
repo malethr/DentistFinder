@@ -27,7 +27,9 @@ public class BetterDoctorService {
         urlBuilder.addQueryParameter(Constants.BETTER_DOCTOR_QUERY_PARAMETER, location);
         String url = urlBuilder.build().toString();
 
-        Request request = new Request.Builder().url(url).build();
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
 
         Call call = client.newCall(request);
         call.enqueue(callback);

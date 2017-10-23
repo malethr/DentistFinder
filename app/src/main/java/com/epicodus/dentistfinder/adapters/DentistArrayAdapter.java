@@ -1,4 +1,4 @@
-package com.epicodus.dentistfinder;
+package com.epicodus.dentistfinder.adapters;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;

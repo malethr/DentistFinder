@@ -8,19 +8,23 @@
     android:padding="5dp"
     tools:context="com.epicodus.dentistfinder.ui.DentistsActivity">
 
-    <TextView
-        android:id="@+id/resultsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
-
-    <ListView
-        android:id="@+id/dentistsListView"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/resultsTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
+        android:id="@+id/recyclerView"/>
+    <!--<TextView-->
+        <!--android:id="@+id/resultsTextView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="15dp" />-->
+
+    <!--<ListView-->
+        <!--android:id="@+id/dentistsListView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@+id/resultsTextView"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="39dp" />-->
 </RelativeLayout>

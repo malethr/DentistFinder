@@ -1,7 +1,10 @@
 package com.epicodus.dentistfinder.models;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
+@Parcel
 public class Dentist {
     private String name;
     private String website;
@@ -32,9 +35,6 @@ public class Dentist {
     }
 
     public String getWebsite() {
-        if (website == null){
-            website = "unavailable";
-        }
         return website;
     }
 
