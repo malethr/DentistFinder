@@ -1,16 +1,18 @@
 package com.epicodus.dentistfinder;
 
+import java.util.ArrayList;
+
 public class Dentist {
     private String name;
     private String website;
     private String imageUrl;
-    private String phone;
+    private ArrayList<String> phone = new ArrayList<>();
     private String street;
     private String city;
     private String state;
     private String zip;
 
-    public Dentist(String name, String website, String imageUrl, String phone, String street, String city, String state, String zip) {
+    public Dentist(String name, String website, String imageUrl, ArrayList<String> phone, String street, String city, String state, String zip) {
         this.name = name;
         this.website = website;
         this.imageUrl = imageUrl;
@@ -30,6 +32,9 @@ public class Dentist {
     }
 
     public String getWebsite() {
+        if (website == null){
+            website = "unavailable";
+        }
         return website;
     }
 
@@ -45,11 +50,11 @@ public class Dentist {
         this.imageUrl = imageUrl;
     }
 
-    public String getPhone() {
+    public ArrayList<String> getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(ArrayList<String> phone) {
         this.phone = phone;
     }
 

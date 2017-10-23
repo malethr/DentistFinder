@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,23 +25,29 @@ public class DentistsActivity extends AppCompatActivity {
     @Bind(R.id.resultsTextView) TextView mResultsTextView;
     @Bind(R.id.dentistsListView) ListView mDentistsListView;
 
+    public ArrayList<Dentist> dentists = new ArrayList<>();
+    private String[] dentistsa = new String[]{
+            "Matthew Aldridge",
+            "Benjamin Thomas",
+            "Joshua Hiller",
+            "Clinton Harrel",
+            "Alexander Kussad",
+    };
+
+    private String[] address = new String[]{
+            "Vancouver, WA",
+            "Vancouver, WA",
+            "Vancouver, WA",
+            "Vancouver, WA",
+            "Vancouver, WA",
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dentists);
 
         ButterKnife.bind(this);
-        DentistArrayAdapter adapter = new DentistArrayAdapter(this, android.R.layout.simple_list_item_1, dentists, address);
-        mDentistsListView.setAdapter(adapter);
-        mDentistsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String dentist = ((TextView) view).getText().toString();
-                Intent intent = new Intent(DentistsActivity.this, DentistDetailActivity.class);
-                intent.putExtra("dentist", dentist);
-                startActivity(intent);
-            }
-        });
 
         Intent intent = getIntent();
         String inputSearch = intent.getStringExtra("inputSearch");
@@ -51,6 +58,7 @@ public class DentistsActivity extends AppCompatActivity {
 
     private void getDentists(String location) {
         final BetterDoctorService betterDoctorService = new BetterDoctorService();
+
         betterDoctorService.findDentists(location, new Callback() {
 
             @Override
@@ -60,12 +68,31 @@ public class DentistsActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    String jsonData = response.body().string();
-                    Log.v(TAG, jsonData);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                dentists = betterDoctorService.processResults(response);
+
+                DentistsActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String[] dentistNames = new String[dentists.size()];
+                        for (int i = 0; i < dentistNames.length; i++) {
+                            dentistNames[i] = dentists.get(i).getName();
+                        }
+
+                        ArrayAdapter adapter = new ArrayAdapter(DentistsActivity.this, android.R.layout.simple_list_item_1, dentistNames);
+                        mDentistsListView.setAdapter(adapter);
+
+                        for (Dentist dentist : dentists) {
+                            Log.d(TAG, "Name: " + dentist.getName());
+                            Log.d(TAG, "Phone: " + dentist.getPhone());
+                            Log.d(TAG, "Website: " + dentist.getWebsite());
+                            Log.d(TAG, "Image url: " + dentist.getImageUrl());
+                            Log.d(TAG, "City: " + dentist.getCity());
+                            Log.d(TAG, "Street: " + dentist.getStreet());
+                            Log.d(TAG, "State: " + dentist.getState());
+                            Log.d(TAG, "Zip: " + dentist.getZip());
+                        }
+                    }
+                });
             }
         });
     }
