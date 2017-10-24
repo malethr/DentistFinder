@@ -3,6 +3,7 @@ package com.epicodus.dentistfinder.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +52,7 @@ public class DentistListAdapter extends RecyclerView.Adapter<DentistListAdapter.
         @Bind(R.id.dentistImageView) ImageView mDentistImageView;
         @Bind(R.id.dentistNameTextView) TextView mDentistNameTextView;
         @Bind(R.id.streetTextView) TextView mStreetTextView;
-        @Bind(R.id.websiteTextView) TextView mWebsiteTextView;
+        @Bind(R.id.phoneTextView) TextView mPhoneTextView;
 
         private Context mContext;
 
@@ -66,7 +67,9 @@ public class DentistListAdapter extends RecyclerView.Adapter<DentistListAdapter.
         public void bindDentist(Dentist dentist) {
             Picasso.with(mContext).load(dentist.getImageUrl()).into(mDentistImageView);
             mDentistNameTextView.setText(dentist.getName());
-            mWebsiteTextView.setText(dentist.getWebsite());
+            String phoneNum = TextUtils.join("",dentist.getPhone());
+            phoneNum = "("+phoneNum.substring(0,3)+")" + phoneNum.substring(3,6)+"-"+ phoneNum.substring(6, phoneNum.length());
+            mPhoneTextView.setText(phoneNum);
             mStreetTextView.setText(dentist.getStreet());
         }
 

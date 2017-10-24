@@ -49,7 +49,7 @@ public class BetterDoctorService {
                 try {
                     website = dentistJSON.getJSONArray("practices").getJSONObject(0).getString("website");
                 } catch (JSONException e) {
-                    website = "";
+                    website = "Website: unavilable";
                 }
                 ArrayList<String> phone = new ArrayList<>();
                 JSONArray phoneJSON = dentistJSON.getJSONArray("practices").getJSONObject(0).getJSONArray("phones");
