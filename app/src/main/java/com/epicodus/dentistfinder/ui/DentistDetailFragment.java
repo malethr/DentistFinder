@@ -1,6 +1,8 @@
 package com.epicodus.dentistfinder.ui;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -19,7 +21,7 @@ import org.parceler.Parcels;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class DentistDetailFragment extends Fragment {
+public class DentistDetailFragment extends Fragment implements View.OnClickListener{
     @Bind(R.id.dentistImageView) ImageView mDentistImageView;
     @Bind(R.id.dentistNameTextView) TextView mDentistNameTextView;
     @Bind(R.id.websiteTextView) TextView mWebsiteTextView;
@@ -56,7 +58,18 @@ public class DentistDetailFragment extends Fragment {
         String phoneNum = TextUtils.join("",mDentist.getPhone());
         phoneNum = "("+phoneNum.substring(0,3)+")" + phoneNum.substring(3,6)+"-"+ phoneNum.substring(6, phoneNum.length());
         mPhoneTextView.setText(phoneNum);
+
+        mWebsiteTextView.setOnClickListener(this);
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == mWebsiteTextView) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(mDentist.getWebsite()));
+            startActivity(webIntent);
+        }
     }
 
 }
