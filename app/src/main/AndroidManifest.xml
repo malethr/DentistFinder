@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.DentistsActivity">
+        <activity android:name=".ui.DentistListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.dentistfinder.ui.MainActivity">
@@ -30,7 +30,7 @@
             android:label="Detail">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.dentistfinder.ui.DentistsActivity">
+                android:value="com.epicodus.dentistfinder.ui.DentistListActivity">
             </meta-data>/>
         </activity>
     </application>

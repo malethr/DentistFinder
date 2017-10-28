@@ -1,11 +1,15 @@
 package com.epicodus.dentistfinder.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
+import com.epicodus.dentistfinder.Constants;
 import com.epicodus.dentistfinder.R;
 import com.epicodus.dentistfinder.adapters.DentistListAdapter;
 import com.epicodus.dentistfinder.models.Dentist;
@@ -20,9 +24,12 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class DentistsActivity extends AppCompatActivity {
+public class DentistListActivity extends AppCompatActivity {
 
-    public static final String TAG = DentistsActivity.class.getSimpleName();
+    public static final String TAG = DentistListActivity.class.getSimpleName();
+    private SharedPreferences mSharedPreferences;
+    private String mRecentAddress;
+
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private DentistListAdapter mAdapter;
 
@@ -39,6 +46,10 @@ public class DentistsActivity extends AppCompatActivity {
         String inputSearch = intent.getStringExtra("inputSearch");
 
         getDentists(inputSearch);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+        Log.d("Shared Pref Location", mRecentAddress);
     }
 
     private void getDentists(String location) {
@@ -55,13 +66,13 @@ public class DentistsActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 dentists = betterDoctorService.processResults(response);
 
-                DentistsActivity.this.runOnUiThread(new Runnable() {
+                DentistListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         mAdapter = new DentistListAdapter(getApplicationContext(), dentists);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager =
-                                new LinearLayoutManager(DentistsActivity.this);
+                                new LinearLayoutManager(DentistListActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
                     }
