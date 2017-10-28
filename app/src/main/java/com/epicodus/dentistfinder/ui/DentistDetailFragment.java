@@ -62,7 +62,7 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
         if (!mDentist.getWebsite().equalsIgnoreCase("Website: unavailable")) {
             mWebsiteTextView.setOnClickListener(this);
         }
-
+        mPhoneTextView.setOnClickListener(this);
         return view;
     }
 
@@ -73,5 +73,11 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
                         Uri.parse(mDentist.getWebsite()));
                 startActivity(webIntent);
             }
-        }
+
+        if (v == mPhoneTextView) {
+        Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
+                Uri.parse("tel:" + mDentist.getPhone()));
+        startActivity(phoneIntent);
+            }
+    }
 }
