@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.dentistfinder.R;
 
@@ -29,16 +30,18 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         Typeface ostrichFont = Typeface.createFromAsset(getAssets(), "fonts/ostrich-regular.ttf");
         mDentistFinderTextView.setTypeface(ostrichFont);
+
         mFindButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String inputSearch = mInputEditText.getText().toString();
+                if(inputSearch.isEmpty()){
+                    Toast.makeText(MainActivity.this,"Enter zipcode, dentist's name or insurance!",Toast.LENGTH_SHORT).show();
+                }else{
                 Intent intent = new Intent(MainActivity.this, DentistsActivity.class);
                 intent.putExtra("inputSearch", inputSearch);
-                startActivity(intent);
+                startActivity(intent);}
             }
         });
-
-
     }
 }
