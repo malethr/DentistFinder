@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.dentistfinder.R;
 import com.epicodus.dentistfinder.models.Dentist;
@@ -58,18 +59,19 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
         String phoneNum = TextUtils.join("",mDentist.getPhone());
         phoneNum = "("+phoneNum.substring(0,3)+")" + phoneNum.substring(3,6)+"-"+ phoneNum.substring(6, phoneNum.length());
         mPhoneTextView.setText(phoneNum);
+        if (!mDentist.getWebsite().equalsIgnoreCase("Website: unavailable")) {
+            mWebsiteTextView.setOnClickListener(this);
+        }
 
-        mWebsiteTextView.setOnClickListener(this);
         return view;
     }
 
     @Override
     public void onClick(View v) {
         if (v == mWebsiteTextView) {
-            Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(mDentist.getWebsite()));
-            startActivity(webIntent);
+                Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(mDentist.getWebsite()));
+                startActivity(webIntent);
+            }
         }
-    }
-
 }
