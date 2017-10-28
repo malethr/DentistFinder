@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -37,6 +38,7 @@ public class BetterDoctorService {
 
     public ArrayList<Dentist> processResults(Response response) {
         ArrayList<Dentist> dentists = new ArrayList<>();
+        ArrayList<String> uids = new ArrayList<>();
 
         try {
             String jsonData = response.body().string();
@@ -44,6 +46,7 @@ public class BetterDoctorService {
             JSONArray mainDentistsJSON = betterDoctorJSON.getJSONArray("data");
             for (int i = 0; i < mainDentistsJSON.length(); i++) {
                 JSONObject dentistJSON = mainDentistsJSON.getJSONObject(i);
+                String uid = dentistJSON.getJSONArray("practices").getJSONObject(0).getString("uid");
                 String name = dentistJSON.getJSONArray("practices").getJSONObject(0).getString("name");
                 String website;
                 try {
@@ -64,7 +67,11 @@ public class BetterDoctorService {
 
                 String imageUrl = dentistJSON.getJSONObject("profile").getString("image_url");
                 Dentist dentist = new Dentist(name, website, imageUrl, phone, street, city, state, zip);
-                dentists.add(dentist);
+                if(uids.contains(uid)==false){
+                    uids.add(uid);
+                    dentists.add(dentist);
+                }
+
             }
         }
         catch (IOException e){
