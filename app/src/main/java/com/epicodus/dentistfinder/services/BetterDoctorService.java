@@ -72,6 +72,7 @@ public class BetterDoctorService {
                 String imageUrl = dentistJSON.getJSONObject("profile").getString("image_url");
 
                 String bio = dentistJSON.getJSONObject("profile").getString("bio");
+
                 Dentist dentist = new Dentist(firstName, lastName, website, imageUrl, phone, street, city, state, zip, bio);
                     dentists.add(dentist);
             }

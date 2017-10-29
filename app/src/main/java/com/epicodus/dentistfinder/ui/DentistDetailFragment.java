@@ -66,16 +66,16 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
         mStreetTextView.setText(mDentist.getStreet() + ", " + mDentist.getCity() + ", " + mDentist.getState() + ", " + mDentist.getZip());
 
         mWebsiteTextView.setText(mDentist.getWebsite());
-
-        if (!mDentist.getBio().equals("")) {
-            mBioTextView.setText("Bio: "+ mDentist.getBio());
-        }else {
-            mBioTextView.setText("Sorry! No Available Bio Information!");
+        String bio = mDentist.getBio();
+        if(!bio.equals("")){
+            mBioTextView.setText("Biography:\n"+bio);
+        }else{
+            mBioTextView.setText("Sorry! No available information!");
         }
 
-
-
-        if (!mDentist.getWebsite().equals("Website: unavailable")) {
+        String web = "Website: unavailable";
+        String website = mDentist.getWebsite();
+        if (!website.equals(web)) {
             mWebsiteTextView.setOnClickListener(this);
         }
 
