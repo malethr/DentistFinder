@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public void onClick(View v) {
             String inputSearch = mInputEditText.getText().toString();
 
-            saveLocationToFirebase(inputSearch);
+            saveInputSearchToFirebase(inputSearch);
 //            if(!inputSearch.isEmpty()){
 //                //Toast.makeText(MainActivity.this,"Enter zipcode, dentist's name or insurance!",Toast.LENGTH_SHORT).show();
 //                addToSharedPreferences(inputSearch);
@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
         }
 
-    public void saveLocationToFirebase(String location) {
-        mSearchedLocationReference.setValue(location);
+    public void saveInputSearchToFirebase(String inputSearch) {
+        mSearchedLocationReference.push().setValue(inputSearch);
     }
 
 
