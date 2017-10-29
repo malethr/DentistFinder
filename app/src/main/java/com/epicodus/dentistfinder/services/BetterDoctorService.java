@@ -60,6 +60,7 @@ public class BetterDoctorService {
                 ArrayList<String> phone = new ArrayList<>();
                 JSONArray phoneJSON = dentistJSON.getJSONArray("practices").getJSONObject(0).getJSONArray("phones");
                 for (int j = 0; j < phoneJSON.length(); j++) {
+                    String type = phoneJSON.getJSONObject(j).getString("type");
                     String number = phoneJSON.getJSONObject(j).getString("number");
                     phone.add(number);
                 }
