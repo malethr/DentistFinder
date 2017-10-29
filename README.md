@@ -23,8 +23,8 @@ _Ask user's input for either zip code, dentist name or insurance then program wi
 ## Initial Screenshots
 
 ![image of dentist create](https://github.com/malethr/DentistFinder/blob/master/screenshots/create.png)
-![image of dentist login](https://github.com/malethr/DentistFinder/blob/master/screenshots/detail.png)
-![image of homepage](https://github.com/malethr/DentistFinder/blob/master/screenshots/home.png)
+![image of dentist login](https://github.com/malethr/DentistFinder/blob/master/screenshots/login.png)
+![image of login](https://github.com/malethr/DentistFinder/blob/master/screenshots/login.png)
 ![image of dentist list](https://github.com/malethr/DentistFinder/blob/master/screenshots/list.png)
 ![image of dentist detail](https://github.com/malethr/DentistFinder/blob/master/screenshots/detail.png)
 ![image of dentist saved](https://github.com/malethr/DentistFinder/blob/master/screenshots/saved.png)
