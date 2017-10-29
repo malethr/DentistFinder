@@ -23,9 +23,9 @@
         <activity
             android:name=".ui.DentistDetailActivity"
             android:label="Detail">
-            <!--<meta-data-->
-                <!--android:name="android.support.PARENT_ACTIVITY"-->
-                <!--android:value="com.epicodus.dentistfinder.ui.DentistListActivity"/>-->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.dentistfinder.ui.DentistListActivity"/>
         </activity>
         <activity android:name=".ui.SavedDentistListActivity">
         </activity>
