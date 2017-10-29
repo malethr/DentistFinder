@@ -61,8 +61,10 @@ public class BetterDoctorService {
                 JSONArray phoneJSON = dentistJSON.getJSONArray("practices").getJSONObject(0).getJSONArray("phones");
                 for (int j = 0; j < phoneJSON.length(); j++) {
                     String type = phoneJSON.getJSONObject(j).getString("type");
-                    String number = phoneJSON.getJSONObject(j).getString("number");
-                    phone.add(number);
+                    if (type.equals("landline")) {
+                        String number = phoneJSON.getJSONObject(j).getString("number");
+                        phone.add(number);
+                    }
                 }
 
                 String city = dentistJSON.getJSONArray("practices").getJSONObject(0).getJSONObject("visit_address").getString("city");

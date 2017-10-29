@@ -68,7 +68,7 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
         mWebsiteTextView.setText(mDentist.getWebsite());
         String bio = mDentist.getBio();
         if(!bio.equals("")){
-            mBioTextView.setText("Biography:\n"+bio);
+            mBioTextView.setText("Biography:\n" + bio);
         }else{
             mBioTextView.setText("Sorry! No available information!");
         }
