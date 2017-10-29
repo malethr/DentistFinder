@@ -35,8 +35,9 @@ public class DentistListActivity extends AppCompatActivity {
     private String mRecentAddress;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+
     private DentistListAdapter mAdapter;
-    public ArrayList<Dentist> dentists = new ArrayList<>();
+    public ArrayList<Dentist> mDentists = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,12 +106,12 @@ public class DentistListActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                dentists = betterDoctorService.processResults(response);
+                mDentists = betterDoctorService.processResults(response);
 
                 DentistListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mAdapter = new DentistListAdapter(getApplicationContext(), dentists);
+                        mAdapter = new DentistListAdapter(getApplicationContext(), mDentists);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager =
                                 new LinearLayoutManager(DentistListActivity.this);
@@ -122,7 +123,7 @@ public class DentistListActivity extends AppCompatActivity {
         });
     }
 
-    private void addToSharedPreferences(String location) {
-        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
+    private void addToSharedPreferences(String inputSearch) {
+        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, inputSearch).apply();
     }
 }

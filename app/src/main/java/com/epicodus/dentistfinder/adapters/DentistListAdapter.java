@@ -66,7 +66,7 @@ public class DentistListAdapter extends RecyclerView.Adapter<DentistListAdapter.
 
         public void bindDentist(Dentist dentist) {
             Picasso.with(mContext).load(dentist.getImageUrl()).into(mDentistImageView);
-            mDentistNameTextView.setText(dentist.getfirstName() + " " + dentist.getLastName());
+            mDentistNameTextView.setText(dentist.getFirstName() + " " + dentist.getLastName());
             String phoneNum = TextUtils.join("",dentist.getPhone());
             phoneNum ="("+phoneNum.substring(0,3)+")" + phoneNum.substring(3,6)+"-"+ phoneNum.substring(6, phoneNum.length());
             mPhoneTextView.setText(phoneNum);
@@ -77,7 +77,7 @@ public class DentistListAdapter extends RecyclerView.Adapter<DentistListAdapter.
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
             Intent intent = new Intent(mContext, DentistDetailActivity.class);
-            intent.putExtra("position", itemPosition);
+            intent.putExtra("position", itemPosition + "");
             intent.putExtra("dentists", Parcels.wrap(mDentists));
             mContext.startActivity(intent);
         }

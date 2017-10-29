@@ -32,8 +32,9 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
     @Bind(R.id.dentistNameTextView) TextView mDentistNameTextView;
     @Bind(R.id.websiteTextView) TextView mWebsiteTextView;
     @Bind(R.id.addressTextView) TextView mStreetTextView;
-    @Bind(R.id.phoneTextView) TextView mPhoneTextView;
+    @Bind(R.id.callImageView) ImageView mCallImageView;
     @Bind(R.id.saveDentistButton) TextView mSaveDentistButton;
+    @Bind(R.id.bioTextView) TextView mBioTextView;
 
     private Dentist mDentist;
 
@@ -61,17 +62,25 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
                 .load(mDentist.getImageUrl())
                 .into(mDentistImageView);
 
-        mDentistNameTextView.setText(mDentist.getfirstName() + " " + mDentist.getLastName());
+        mDentistNameTextView.setText(mDentist.getFirstName() + " " + mDentist.getLastName());
         mStreetTextView.setText(mDentist.getStreet() + ", " + mDentist.getCity() + ", " + mDentist.getState() + ", " + mDentist.getZip());
+
         mWebsiteTextView.setText(mDentist.getWebsite());
-        String phoneNum = TextUtils.join("",mDentist.getPhone());
-        phoneNum = "("+phoneNum.substring(0,3)+")" + phoneNum.substring(3,6)+"-"+ phoneNum.substring(6, phoneNum.length());
-        mPhoneTextView.setText(phoneNum);
-        if (!mDentist.getWebsite().equalsIgnoreCase("Website: unavailable")) {
+
+        if (!mDentist.getBio().equals("")) {
+            mBioTextView.setText("Bio: "+ mDentist.getBio());
+        }else {
+            mBioTextView.setText("Sorry! No Available Bio Information!");
+        }
+
+
+
+        if (!mDentist.getWebsite().equals("Website: unavailable")) {
             mWebsiteTextView.setOnClickListener(this);
         }
-        mPhoneTextView.setOnClickListener(this);
+
         mSaveDentistButton.setOnClickListener(this);
+        mCallImageView.setOnClickListener(this);
 
         return view;
     }
@@ -84,7 +93,7 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
             startActivity(webIntent);
         }
 
-        if (v == mPhoneTextView) {
+        if (v == mCallImageView) {
             Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
                 Uri.parse("tel:" + mDentist.getPhone()));
             startActivity(phoneIntent);
@@ -93,15 +102,16 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String uid = user.getUid();
 
-            DatabaseReference restaurantRef = FirebaseDatabase
+            DatabaseReference dentistRef = FirebaseDatabase
                     .getInstance()
                     .getReference(Constants.FIREBASE_CHILD_DENTISTS)
                     .child(uid);
 
-            DatabaseReference pushRef = restaurantRef.push();
+            DatabaseReference pushRef = dentistRef.push();
             String pushId = pushRef.getKey();
             mDentist.setPushId(pushId);
             pushRef.setValue(mDentist);
+
 
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }

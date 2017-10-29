@@ -7,20 +7,21 @@ import java.util.List;
 
 @Parcel
 public class Dentist {
-    private String firstName;
-    private String lastName;
-    private String website;
-    private String imageUrl;
+    String firstName;
+    String lastName;
+    String website;
+    String imageUrl;
     List<String> phone = new ArrayList<>();
-    private String street;
-    private String city;
-    private String state;
-    private String zip;
+    String street;
+    String city;
+    String state;
+    String zip;
+    String bio;
     private String pushId;
 
     public Dentist(){}
 
-    public Dentist(String firstName, String lastName, String website, String imageUrl, ArrayList<String> phone, String street, String city, String state, String zip) {
+    public Dentist(String firstName, String lastName, String website, String imageUrl, ArrayList<String> phone, String street, String city, String state, String zip, String bio) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.website = website;
@@ -30,13 +31,14 @@ public class Dentist {
         this.city = city;
         this.state = state;
         this.zip = zip;
+        this.bio = bio;
     }
 
-    public String getfirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setfirstName(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
@@ -103,6 +105,14 @@ public class Dentist {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
     public String getPushId() {

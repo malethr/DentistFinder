@@ -1,47 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.epicodus.myrestaurants.ui.LoginActivity"
-    android:background="@color/colorPrimary">
+    tools:context="com.epicodus.dentistfinder.ui.LoginActivity"
+    android:background="@drawable/bg_gradient">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="30dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/linearLayout">
+        android:id="@+id/linearLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="55dp">
 
         <EditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@android:color/white"
+            android:fontFamily="sans-serif"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:nextFocusDown="@+id/passwordEditText"
             android:padding="10dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@android:color/black"
-            android:textColorHint="@color/colorDivider"
-            android:textSize="20sp" />
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="20sp"/>
 
         <EditText
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
+            android:backgroundTint="@android:color/white"
+            android:fontFamily="sans-serif"
             android:hint="Password"
             android:inputType="textPassword"
             android:nextFocusDown="@+id/passwordEditText"
             android:padding="10dp"
-            android:textColor="@android:color/black"
-            android:textColorHint="@color/colorDivider"
-            android:textSize="20sp" />
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="20sp"/>
 
 
         <Button
@@ -66,14 +71,12 @@
 
     </LinearLayout>
 
-    <TextView
+    <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:textColor="@color/colorPrimaryLight"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:layout_above="@+id/linearLayout"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/logo"
+        android:layout_above="@+id/linearLayout"/>
 
 </RelativeLayout>

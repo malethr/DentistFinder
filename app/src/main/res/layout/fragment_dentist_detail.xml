@@ -1,4 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
@@ -13,101 +14,116 @@
         <ImageView
             android:id="@+id/dentistImageView"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="280dp"
             android:scaleType="centerCrop"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="105dp"
             android:background="@android:color/white"
-            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:paddingBottom="20dp">
+            android:paddingTop="20dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dentist Name"
                 android:id="@+id/dentistNameTextView"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:textSize="20sp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/streetTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:text="Dentist Name"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/addressTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.20"
+                android:gravity="center_vertical"
+                android:text="123 SW Best Ever Ave"
+                android:textSize="15sp"
+                android:textStyle="bold"
                 android:layout_below="@+id/dentistNameTextView"
-                android:textColor="@color/colorSecondaryText"
-                android:textStyle="italic"/>
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+
+            <ImageView
+                android:id="@+id/callImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:cropToPadding="false"
+                android:scaleType="fitCenter"
+                android:scaleX="-2.5"
+                android:scaleY="2.5"
+                app:srcCompat="@drawable/ic_call_black_24dp"/>
+
         </RelativeLayout>
+
+        <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="120dp"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/websiteTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTextIcons"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:text="View Online"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/bioTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Bio"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/websiteTextView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"/>
+
+            </RelativeLayout>
+        </ScrollView>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_above="@+id/saveDentistButton"
-                android:paddingLeft="30dp"
-                android:paddingTop="20dp"
-                android:paddingRight="30dp">
-
-                <TextView
-                    android:id="@+id/addressTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center_vertical"
-                    android:text="123 SW Best Ever Ave"
-                    android:textColor="@color/colorTextIcons"
-                    android:textSize="15sp"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="View Online"
-                    android:id="@+id/websiteTextView"
-                    android:textColor="@color/colorTextIcons"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center" />
-
-                <TextView
-                    android:id="@+id/phoneTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:text="(360) 111-1111"
-                    android:textColor="@color/colorTextIcons"
-                    android:textSize="15sp"
-                    android:textStyle="bold"/>
-
-            </LinearLayout>
-
             <Button
-                android:id="@+id/saveDentistButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:background="@color/colorAccent"
-                android:text="Save Dentist"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="15sp"/>
-        </RelativeLayout>
+            android:id="@+id/saveDentistButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:text="Save Dentist"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_alignParentBottom="true"
+            android:textSize="15sp"/></RelativeLayout>
+
     </LinearLayout>
 
 </FrameLayout>

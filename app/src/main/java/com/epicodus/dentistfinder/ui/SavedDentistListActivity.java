@@ -42,7 +42,6 @@ public class SavedDentistListActivity extends AppCompatActivity {
                 .getReference(Constants.FIREBASE_CHILD_DENTISTS)
                 .child(uid);
 
-        mDentistReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_DENTISTS);
         setUpFirebaseAdapter();
     }
 

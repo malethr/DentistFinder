@@ -44,15 +44,14 @@ public class FirebaseDentistViewHolder extends RecyclerView.ViewHolder implement
         TextView streetTextView = (TextView) mView.findViewById(R.id.streetTextView);
         TextView phoneTextView = (TextView) mView.findViewById(R.id.phoneTextView);
 
-        Picasso.with(mContext)
-                .load(dentist.getImageUrl())
+        Picasso.with(mContext).load(dentist.getImageUrl())
                 .resize(MAX_WIDTH, MAX_HEIGHT)
                 .centerCrop()
                 .into(dentistImageView);
 
-        nameTextView.setText(dentist.getfirstName() + " " + dentist.getLastName());
+        nameTextView.setText(dentist.getFirstName());
         String phoneNum = TextUtils.join("",dentist.getPhone());
-        phoneNum ="("+phoneNum.substring(0,3)+")" + phoneNum.substring(3,6)+"-"+ phoneNum.substring(6, phoneNum.length());
+//        phoneNum ="("+phoneNum.substring(0,3)+")" + phoneNum.substring(3,6)+"-"+ phoneNum.substring(6, phoneNum.length());
         phoneTextView.setText(phoneNum);
         streetTextView.setText(dentist.getStreet());
     }
@@ -73,7 +72,7 @@ public class FirebaseDentistViewHolder extends RecyclerView.ViewHolder implement
 
                 Intent intent = new Intent(mContext, DentistDetailActivity.class);
                 intent.putExtra("position", itemPosition + "");
-                intent.putExtra("restaurants", Parcels.wrap(dentists));
+                intent.putExtra("dentists", Parcels.wrap(dentists));
 
                 mContext.startActivity(intent);
             }

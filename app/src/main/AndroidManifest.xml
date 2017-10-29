@@ -11,8 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".ui.MainActivity">
+        <activity android:name=".ui.MainActivity">
         </activity>
         <activity android:name=".ui.DentistListActivity">
             <meta-data
@@ -27,14 +26,20 @@
                 android:value="com.epicodus.dentistfinder.ui.DentistListActivity"/>
         </activity>
         <activity android:name=".ui.SavedDentistListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.dentistfinder.ui.MainActivity"/>
         </activity>
         <activity android:name=".ui.CreateAccountActivity">
         </activity>
         <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.DentistsActivity">
         </activity>
     </application>
 

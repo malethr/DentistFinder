@@ -1,6 +1,7 @@
 package com.epicodus.dentistfinder.ui;
 
 
+
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,7 +29,7 @@ public class DentistDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mDentists = Parcels.unwrap(getIntent().getParcelableExtra("dentists"));
-        int startingPosition = getIntent().getIntExtra("position", 0);
+        int startingPosition = Integer.parseInt(getIntent().getStringExtra("position"));
 
         adapterViewPager = new DentistPagerAdapter(getSupportFragmentManager(), mDentists);
         mViewPager.setAdapter(adapterViewPager);

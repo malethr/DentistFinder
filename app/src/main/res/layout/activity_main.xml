@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="5dp"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/bg_gradient"
     tools:context="com.epicodus.dentistfinder.ui.MainActivity">
 
     <ImageView

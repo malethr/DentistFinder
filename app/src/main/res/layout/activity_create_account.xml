@@ -1,85 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.epicodus.dentistfinder.ui.CreateAccountActivity"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/bg_gradient">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="30dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/linearLayout">
+        android:id="@+id/linearLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="32dp">
 
         <EditText
             android:id="@+id/nameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:hint="Name"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@android:color/white"
+            android:hint="Jane Doe"
             android:nextFocusDown="@+id/passwordEditText"
             android:padding="10dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@android:color/black"
-            android:textColorHint="@color/colorDivider"
-            android:textSize="20sp" />
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="20sp"/>
 
         <EditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:hint="Email"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@android:color/white"
+            android:fontFamily="sans-serif"
+            android:hint="user@example.com"
             android:inputType="textEmailAddress"
             android:nextFocusDown="@+id/passwordEditText"
             android:padding="10dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@android:color/black"
-            android:textColorHint="@color/colorDivider"
-            android:textSize="20sp" />
+            android:selectAllOnFocus="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="20sp"/>
 
         <EditText
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:hint="Password"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@android:color/white"
+            android:fontFamily="sans-serif"
+            android:hint="Password(atleast 6 characters)"
             android:inputType="textPassword"
             android:nextFocusDown="@+id/passwordEditText"
             android:padding="10dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@android:color/black"
-            android:textColorHint="@color/colorDivider"
-            android:textSize="20sp" />
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="20sp"/>
 
         <EditText
             android:id="@+id/confirmPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@android:color/white"
+            android:fontFamily="sans-serif"
             android:hint="Confirm Password"
             android:inputType="textPassword"
             android:nextFocusDown="@+id/passwordEditText"
             android:padding="10dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@android:color/black"
-            android:textColorHint="@color/colorDivider"
-            android:textSize="20sp" />
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="20sp"/>
 
 
         <Button
             android:id="@+id/createUserButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Sign up"
+            android:layout_marginTop="15dp"
             android:background="@color/colorAccent"
-            android:layout_marginTop="15dp"/>
+            android:elevation="0dp"
+            android:padding="10dp"
+            android:text="Sign up"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -94,14 +103,13 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Account"
-        android:textColor="@color/colorPrimaryLight"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:layout_above="@+id/linearLayout"
-        android:layout_centerHorizontal="true" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/logo"
+        android:layout_above="@+id/linearLayout"/>
 
 </RelativeLayout>
