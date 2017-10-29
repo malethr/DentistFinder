@@ -25,7 +25,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.dentistfinder.ui.DentistListActivity"/>
         </activity>
-        <activity android:name=".ui.SavedDentistListActivity">
+        <activity android:name=".ui.SavedDentistListActivity"
+                  android:label="My Saved Dentists">>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.dentistfinder.ui.MainActivity"/>

@@ -12,18 +12,25 @@ _Ask user's input for either zip code, dentist name or insurance then program wi
 
 | Behavior      | Input | Output |
 | ------------- | ------------- | ------------- |
+| Program will ask for user to create account  | maria@something.com, *******| Mainpage |
+| Program will ask for email and password for login  | maria@something.com, *******| Mainpage |
+| Program will ask for display list of dentist based on user's input of zip code  | 98662 | Matthew Aldridge, Benjamin .....|
 | Program will ask for display list of dentist based on user's input of zip code  | 98662 | Matthew Aldridge, Benjamin .....|
 | Program will ask for display list of dentist based on user's input of Dentist  | Matt | Matthew Aldridge |
 | Program will ask for display list of dentist based on user's input of insurance  | Metlife | Matthew Aldridge, Benjamin .....|
+| Program will save chosen dentist when save button is clicked  | Matthew Aldridge clicked save button| Matthew Aldridge - saved|
 
 ## Initial Screenshots
 
+![image of dentist create](https://github.com/malethr/DentistFinder/blob/master/screenshots/create.png)
+![image of dentist login](https://github.com/malethr/DentistFinder/blob/master/screenshots/detail.png)
 ![image of homepage](https://github.com/malethr/DentistFinder/blob/master/screenshots/home.png)
 ![image of dentist list](https://github.com/malethr/DentistFinder/blob/master/screenshots/list.png)
 ![image of dentist detail](https://github.com/malethr/DentistFinder/blob/master/screenshots/detail.png)
+![image of dentist saved](https://github.com/malethr/DentistFinder/blob/master/screenshots/saved.png)
+
 
 ## Future Development
-* _Able to access an API from betterDoctorAPI_
 * _Able to use google maps and can access user's location using geolocation_
 * _Provide a login and sign-up form._
 * _Can accept reviews from patients and can accept bookings._
