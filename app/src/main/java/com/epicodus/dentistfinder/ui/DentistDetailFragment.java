@@ -11,9 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.epicodus.dentistfinder.Constants;
 import com.epicodus.dentistfinder.R;
 import com.epicodus.dentistfinder.models.Dentist;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -27,6 +31,7 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
     @Bind(R.id.websiteTextView) TextView mWebsiteTextView;
     @Bind(R.id.addressTextView) TextView mStreetTextView;
     @Bind(R.id.phoneTextView) TextView mPhoneTextView;
+    @Bind(R.id.saveDentistButton) TextView mSaveDentistButton;
 
     private Dentist mDentist;
 
@@ -50,7 +55,9 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
         View view = inflater.inflate(R.layout.fragment_dentist_detail, container, false);
         ButterKnife.bind(this, view);
 
-        Picasso.with(view.getContext()).load(mDentist.getImageUrl()).into(mDentistImageView);
+        Picasso.with(view.getContext())
+                .load(mDentist.getImageUrl())
+                .into(mDentistImageView);
 
         mDentistNameTextView.setText(mDentist.getfirstName() + " " + mDentist.getLastName());
         mStreetTextView.setText(mDentist.getStreet() + ", " + mDentist.getCity() + ", " + mDentist.getState() + ", " + mDentist.getZip());
@@ -62,21 +69,30 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
             mWebsiteTextView.setOnClickListener(this);
         }
         mPhoneTextView.setOnClickListener(this);
+        mSaveDentistButton.setOnClickListener(this);
+
         return view;
     }
 
     @Override
     public void onClick(View v) {
         if (v == mWebsiteTextView) {
-                Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse(mDentist.getWebsite()));
-                startActivity(webIntent);
-            }
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(mDentist.getWebsite()));
+            startActivity(webIntent);
+        }
 
         if (v == mPhoneTextView) {
-        Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
+            Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
                 Uri.parse("tel:" + mDentist.getPhone()));
-        startActivity(phoneIntent);
-            }
+            startActivity(phoneIntent);
+        }
+        if (v == mSaveDentistButton) {
+            DatabaseReference dentistRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_RESTAURANTS);
+            dentistRef.push().setValue(mDentist);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+        }
     }
 }
