@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "65673226903",
+    "firebase_url": "https://mydentistfinder.firebaseio.com",
+    "project_id": "mydentistfinder",
+    "storage_bucket": "mydentistfinder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:65673226903:android:0a22fe02ba69fd1b",
+        "android_client_info": {
+          "package_name": "com.epicodus.dentistfinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "65673226903-m94dau261bfko7cnpb0ntp1gi0n3tbcc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.epicodus.dentistfinder",
+            "certificate_hash": "52ef7c8900265d9c95c6e1ed4e7deedd8b1e9159"
+          }
+        },
+        {
+          "client_id": "65673226903-n2hi3m3vac346rpve8vhadb5ep1lqme9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXb_VdmSR62M9JgwMuYrGAtFhHHI75rcE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "65673226903-n2hi3m3vac346rpve8vhadb5ep1lqme9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
