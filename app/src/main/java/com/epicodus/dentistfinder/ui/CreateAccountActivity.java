@@ -1,5 +1,6 @@
 package com.epicodus.dentistfinder.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +35,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private ProgressDialog mAuthProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,14 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
         mAuth = FirebaseAuth.getInstance();
         createAuthStateListener();
+        createAuthProgressDialog();
+    }
+
+    private void createAuthProgressDialog() {
+        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog.setTitle("Loading...");
+        mAuthProgressDialog.setMessage("Authenticating with Firebase...");
+        mAuthProgressDialog.setCancelable(false);
     }
 
     @Override
