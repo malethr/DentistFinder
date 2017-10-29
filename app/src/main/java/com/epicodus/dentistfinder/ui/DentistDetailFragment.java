@@ -90,7 +90,7 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
         if (v == mSaveDentistButton) {
             DatabaseReference dentistRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_RESTAURANTS);
+                    .getReference(Constants.FIREBASE_CHILD_DENTISTS);
             dentistRef.push().setValue(mDentist);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }

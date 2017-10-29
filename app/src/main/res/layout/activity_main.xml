@@ -52,7 +52,7 @@
         android:background="@color/colorAccent"
         android:text="FIND"
         android:visibility="visible"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:layout_above="@+id/savedDentistsButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -64,11 +64,10 @@
         android:text="My Saved Dentists"
         android:id="@+id/savedDentistsButton"
         android:background="@color/colorAccent"
-        android:textColor="@color/colorTextIcons"
         android:visibility="visible"
+        android:textSize="20sp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
-
 
 </RelativeLayout>
