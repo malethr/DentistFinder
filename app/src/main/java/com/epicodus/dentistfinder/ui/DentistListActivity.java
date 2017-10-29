@@ -25,8 +25,8 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class DentistListActivity extends AppCompatActivity {
-    private SharedPreferences mSharedPreferences;
-    private String mRecentAddress;
+//    private SharedPreferences mSharedPreferences;
+//    private String mRecentAddress;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private DentistListAdapter mAdapter;
@@ -45,11 +45,11 @@ public class DentistListActivity extends AppCompatActivity {
 
         getDentists(inputSearch);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
-        if (mRecentAddress != null) {
-            getDentists(mRecentAddress);
-        }
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+//        if (mRecentAddress != null) {
+//            getDentists(mRecentAddress);
+//        }
     }
 
     private void getDentists(String location) {
