@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.findButton) Button mFindButton;
     @Bind(R.id.inputEditText) EditText mInputEditText;
     @Bind(R.id.dentistFinderTextView) TextView mDentistFinderTextView;
+    @Bind(R.id.savedDentistsButton) Button mSavedDentistsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,10 +73,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        mEditor = mSharedPreferences.edit();
 
         mFindButton.setOnClickListener(this);
+        mSavedDentistsButton.setOnClickListener(this);
     }
 
         @Override
         public void onClick(View v) {
+            if(v == mFindButton){
             String inputSearch = mInputEditText.getText().toString();
 
             saveInputSearchToFirebase(inputSearch);
@@ -87,6 +90,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(MainActivity.this, DentistListActivity.class);
                 intent.putExtra("inputSearch", inputSearch);
                 startActivity(intent);
+            }
+            if (v == mSavedDentistsButton) {
+                Intent intent = new Intent(MainActivity.this, SavedDentistListActivity.class);
+                startActivity(intent);
+            }
         }
 
     public void saveInputSearchToFirebase(String inputSearch) {
