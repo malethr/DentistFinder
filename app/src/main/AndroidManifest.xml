@@ -14,33 +14,28 @@
         <activity
             android:name=".ui.MainActivity"
             android:theme="@style/NoActionBarTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".ui.DentistListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.dentistfinder.ui.MainActivity">
-            </meta-data>
-            />
+                android:value="com.epicodus.dentistfinder.ui.MainActivity"/>
         </activity>
         <activity
             android:name=".ui.DentistDetailActivity"
             android:label="Detail">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.dentistfinder.ui.DentistListActivity">
-            </meta-data>
-            />
+            <!--<meta-data-->
+                <!--android:name="android.support.PARENT_ACTIVITY"-->
+                <!--android:value="com.epicodus.dentistfinder.ui.DentistListActivity"/>-->
         </activity>
         <activity android:name=".ui.SavedDentistListActivity">
         </activity>
         <activity android:name=".ui.CreateAccountActivity">
         </activity>
         <activity android:name=".ui.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 
