@@ -1,5 +1,7 @@
 package com.epicodus.dentistfinder.services;
 
+import android.telephony.PhoneNumberUtils;
+
 import com.epicodus.dentistfinder.Constants;
 import com.epicodus.dentistfinder.models.Dentist;
 
@@ -10,6 +12,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -47,7 +50,8 @@ public class BetterDoctorService {
             for (int i = 0; i < mainDentistsJSON.length(); i++) {
                 JSONObject dentistJSON = mainDentistsJSON.getJSONObject(i);
                 String uid = dentistJSON.getJSONArray("practices").getJSONObject(0).getString("uid");
-                String name = dentistJSON.getJSONArray("practices").getJSONObject(0).getString("name");
+                String firstName = dentistJSON.getJSONObject("profile").getString("first_name");
+                String lastName = dentistJSON.getJSONObject("profile").getString("last_name");
                 String website;
                 try {
                     website = dentistJSON.getJSONArray("practices").getJSONObject(0).getString("website");
@@ -57,20 +61,21 @@ public class BetterDoctorService {
                 ArrayList<String> phone = new ArrayList<>();
                 JSONArray phoneJSON = dentistJSON.getJSONArray("practices").getJSONObject(0).getJSONArray("phones");
                 for (int j = 0; j < phoneJSON.length(); j++) {
-                    String jphone = phoneJSON.getJSONObject(j).getString("number");
-                    phone.add(jphone);
+                    String number = phoneJSON.getJSONObject(j).getString("number");
+                    phone.add(number);
                 }
+
                 String city = dentistJSON.getJSONArray("practices").getJSONObject(0).getJSONObject("visit_address").getString("city");
                 String zip = dentistJSON.getJSONArray("practices").getJSONObject(0).getJSONObject("visit_address").getString("zip");
                 String state = dentistJSON.getJSONArray("practices").getJSONObject(0).getJSONObject("visit_address").getString("state");
                 String street = dentistJSON.getJSONArray("practices").getJSONObject(0).getJSONObject("visit_address").getString("street");
 
                 String imageUrl = dentistJSON.getJSONObject("profile").getString("image_url");
-                Dentist dentist = new Dentist(name, website, imageUrl, phone, street, city, state, zip);
-                if(uids.contains(uid)==false){
-                    uids.add(uid);
+                Dentist dentist = new Dentist(firstName, lastName, website, imageUrl, phone, street, city, state, zip);
+//                if(uids.contains(uid)==false){
+//                    uids.add(uid);
                     dentists.add(dentist);
-                }
+//                }
 
             }
         }

@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 @Parcel
 public class Dentist {
-    private String name;
+    private String firstName;
+    private String lastName;
     private String website;
     private String imageUrl;
     private ArrayList<String> phone = new ArrayList<>();
@@ -17,8 +18,9 @@ public class Dentist {
 
     public Dentist(){}
 
-    public Dentist(String name, String website, String imageUrl, ArrayList<String> phone, String street, String city, String state, String zip) {
-        this.name = name;
+    public Dentist(String firstName, String lastName, String website, String imageUrl, ArrayList<String> phone, String street, String city, String state, String zip) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.website = website;
         this.imageUrl = imageUrl;
         this.phone = phone;
@@ -28,13 +30,22 @@ public class Dentist {
         this.zip = zip;
     }
 
-    public String getName() {
-        return name;
+    public String getfirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setfirstName(String firstName) {
+        this.firstName = firstName;
     }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
 
     public String getWebsite() {
         return website;

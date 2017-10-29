@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.dentistfinder.Constants;
 import com.epicodus.dentistfinder.R;
@@ -42,15 +43,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public void onClick(View v) {
-            if (v == mFindButton) {
-                String location = mInputEditText.getText().toString();
-                addToSharedPreferences(location);
-                Intent intent = new Intent(MainActivity.this, DentistListActivity.class);
-                startActivity(intent);
+            String inputSearch = mInputEditText.getText().toString();
+            if(!inputSearch.isEmpty()){
+                //Toast.makeText(MainActivity.this,"Enter zipcode, dentist's name or insurance!",Toast.LENGTH_SHORT).show();
+                addToSharedPreferences(inputSearch);
             }
+
+                Intent intent = new Intent(MainActivity.this, DentistListActivity.class);
+                intent.putExtra("inputSearch", inputSearch);
+                startActivity(intent);
         }
 
-    private void addToSharedPreferences(String location) {
-        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
+
+    private void addToSharedPreferences(String inputSearch) {
+        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, inputSearch).apply();
     }
 }

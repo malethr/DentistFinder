@@ -31,7 +31,7 @@ public class DentistPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mDentists.get(position).getName();
+        return mDentists.get(position).getfirstName() + " " + mDentists.get(position).getfirstName() + ", DDS";
     }
 
 }

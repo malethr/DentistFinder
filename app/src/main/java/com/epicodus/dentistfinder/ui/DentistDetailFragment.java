@@ -52,7 +52,7 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
 
         Picasso.with(view.getContext()).load(mDentist.getImageUrl()).into(mDentistImageView);
 
-        mDentistNameTextView.setText(mDentist.getName());
+        mDentistNameTextView.setText(mDentist.getfirstName() + " " + mDentist.getLastName());
         mStreetTextView.setText(mDentist.getStreet() + ", " + mDentist.getCity() + ", " + mDentist.getState() + ", " + mDentist.getZip());
         mWebsiteTextView.setText(mDentist.getWebsite());
         String phoneNum = TextUtils.join("",mDentist.getPhone());

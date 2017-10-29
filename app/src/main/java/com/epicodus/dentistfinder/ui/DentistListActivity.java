@@ -25,8 +25,6 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class DentistListActivity extends AppCompatActivity {
-
-    public static final String TAG = DentistListActivity.class.getSimpleName();
     private SharedPreferences mSharedPreferences;
     private String mRecentAddress;
 
@@ -49,7 +47,9 @@ public class DentistListActivity extends AppCompatActivity {
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
-        Log.d("Shared Pref Location", mRecentAddress);
+        if (mRecentAddress != null) {
+            getDentists(mRecentAddress);
+        }
     }
 
     private void getDentists(String location) {
