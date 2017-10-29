@@ -38,6 +38,10 @@
         </activity>
         <activity android:name=".ui.SavedDentistListActivity">
         </activity>
+        <activity android:name=".ui.CreateAccountActivity">
+        </activity>
+        <activity android:name=".ui.LoginActivity">
+        </activity>
     </application>
 
 </manifest>
