@@ -3,6 +3,7 @@ package com.epicodus.dentistfinder.models;
 import org.parceler.Parcel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Parcel
 public class Dentist {
@@ -10,7 +11,7 @@ public class Dentist {
     private String lastName;
     private String website;
     private String imageUrl;
-    private ArrayList<String> phone = new ArrayList<>();
+    List<String> phone = new ArrayList<>();
     private String street;
     private String city;
     private String state;
@@ -63,11 +64,11 @@ public class Dentist {
         this.imageUrl = imageUrl;
     }
 
-    public ArrayList<String> getPhone() {
+    public List<String> getPhone() {
         return phone;
     }
 
-    public void setPhone(ArrayList<String> phone) {
+    public void setPhone(List<String> phone) {
         this.phone = phone;
     }
 
