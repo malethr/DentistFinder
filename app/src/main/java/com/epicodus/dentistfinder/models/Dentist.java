@@ -16,6 +16,7 @@ public class Dentist {
     private String city;
     private String state;
     private String zip;
+    private String pushId;
 
     public Dentist(){}
 
@@ -102,5 +103,13 @@ public class Dentist {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 }
