@@ -14,14 +14,18 @@ import android.widget.Toast;
 
 import com.epicodus.dentistfinder.Constants;
 import com.epicodus.dentistfinder.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
+//    private SharedPreferences mSharedPreferences;
+//    private SharedPreferences.Editor mEditor;
+
+    private DatabaseReference mSearchedLocationReference;
 
     @Bind(R.id.findButton) Button mFindButton;
     @Bind(R.id.inputEditText) EditText mInputEditText;
@@ -29,14 +33,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mSearchedLocationReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_SEARCHED_LOCATION);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
         Typeface ostrichFont = Typeface.createFromAsset(getAssets(), "fonts/ostrich-regular.ttf");
         mDentistFinderTextView.setTypeface(ostrichFont);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditor = mSharedPreferences.edit();
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mEditor = mSharedPreferences.edit();
 
         mFindButton.setOnClickListener(this);
     }
@@ -44,18 +55,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onClick(View v) {
             String inputSearch = mInputEditText.getText().toString();
-            if(!inputSearch.isEmpty()){
-                //Toast.makeText(MainActivity.this,"Enter zipcode, dentist's name or insurance!",Toast.LENGTH_SHORT).show();
-                addToSharedPreferences(inputSearch);
-            }
+
+            saveLocationToFirebase(inputSearch);
+//            if(!inputSearch.isEmpty()){
+//                //Toast.makeText(MainActivity.this,"Enter zipcode, dentist's name or insurance!",Toast.LENGTH_SHORT).show();
+//                addToSharedPreferences(inputSearch);
+//            }
 
                 Intent intent = new Intent(MainActivity.this, DentistListActivity.class);
                 intent.putExtra("inputSearch", inputSearch);
                 startActivity(intent);
         }
 
-
-    private void addToSharedPreferences(String inputSearch) {
-        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, inputSearch).apply();
+    public void saveLocationToFirebase(String location) {
+        mSearchedLocationReference.setValue(location);
     }
+
+
+//    private void addToSharedPreferences(String inputSearch) {
+//        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, inputSearch).apply();
+//    }
 }
