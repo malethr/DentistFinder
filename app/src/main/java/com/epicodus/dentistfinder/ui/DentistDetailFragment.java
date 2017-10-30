@@ -107,11 +107,11 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
                     .getReference(Constants.FIREBASE_CHILD_DENTISTS)
                     .child(uid);
 
+
             DatabaseReference pushRef = dentistRef.push();
             String pushId = pushRef.getKey();
             mDentist.setPushId(pushId);
             pushRef.setValue(mDentist);
-
 
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }

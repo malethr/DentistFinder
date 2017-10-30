@@ -13,6 +13,8 @@ import com.epicodus.dentistfinder.Constants;
 import com.epicodus.dentistfinder.R;
 import com.epicodus.dentistfinder.models.Dentist;
 import com.epicodus.dentistfinder.ui.DentistDetailActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +25,7 @@ import com.squareup.picasso.Picasso;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class FirebaseDentistViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     private static final int MAX_WIDTH = 200;
@@ -61,11 +64,18 @@ public class FirebaseDentistViewHolder extends RecyclerView.ViewHolder implement
         final ArrayList<Dentist> dentists = new ArrayList<>();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(Constants.FIREBASE_CHILD_DENTISTS);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
-
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     dentists.add(snapshot.getValue(Dentist.class));
+                    Iterator<DataSnapshot> iterator = snapshot.getChildren().iterator();
+                    if(snapshot.getKey().equals(uid)) {
+                        while (iterator.hasNext())
+                            dentists.add(iterator.next().getValue(Dentist.class));
+
+                    }
                 }
 
                 int itemPosition = getLayoutPosition();
