@@ -59,7 +59,7 @@ public class FirebaseDentistViewHolder extends RecyclerView.ViewHolder implement
     @Override
     public void onClick(View view) {
         final ArrayList<Dentist> dentists = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_DENTISTS);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(Constants.FIREBASE_CHILD_DENTISTS);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override

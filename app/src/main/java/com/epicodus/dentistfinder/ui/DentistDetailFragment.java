@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,16 +64,16 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
         mDentistNameTextView.setText(mDentist.getFirstName() + " " + mDentist.getLastName());
         mStreetTextView.setText(mDentist.getStreet() + ", " + mDentist.getCity() + ", " + mDentist.getState() + ", " + mDentist.getZip());
 
-        mWebsiteTextView.setText(mDentist.getWebsite());
-        String bio = mDentist.getBio();
-        if(!bio.equals("")){
-            mBioTextView.setText("Biography:\n" + bio);
-        }else{
-            mBioTextView.setText("Sorry! No available information!");
+        mWebsiteTextView.setText(mDentist.getWebsite()+"");
+        String bio = new String (mDentist.getBio()+"");
+        String emptyBio = new String ("");
+        if(bio.equals(emptyBio)){
+            bio = "Sorry! No available information!";
         }
 
-        String web = "Website: unavailable";
-        String website = mDentist.getWebsite();
+        mBioTextView.setText(bio + "");
+        String web = new String("Website: unavailable");
+        String website = new String (mDentist.getWebsite()+"");
         if (!website.equals(web)) {
             mWebsiteTextView.setOnClickListener(this);
         }
@@ -98,6 +97,7 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
                 Uri.parse("tel:" + mDentist.getPhone()));
             startActivity(phoneIntent);
         }
+
         if (v == mSaveDentistButton) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String uid = user.getUid();
