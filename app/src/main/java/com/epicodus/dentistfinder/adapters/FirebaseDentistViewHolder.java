@@ -30,6 +30,7 @@ import java.util.Iterator;
 public class FirebaseDentistViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
+    public ImageView dentistImageView;
 
     View mView;
     Context mContext;
@@ -42,7 +43,7 @@ public class FirebaseDentistViewHolder extends RecyclerView.ViewHolder implement
     }
 
     public void bindDentist(Dentist dentist) {
-        ImageView dentistImageView = (ImageView) mView.findViewById(R.id.dentistImageView);
+        dentistImageView = (ImageView) mView.findViewById(R.id.dentistImageView);
         TextView nameTextView = (TextView) mView.findViewById(R.id.dentistNameTextView);
         TextView streetTextView = (TextView) mView.findViewById(R.id.streetTextView);
         TextView phoneTextView = (TextView) mView.findViewById(R.id.phoneTextView);

@@ -4,6 +4,10 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -15,10 +19,12 @@
             android:id="@+id/dragIcon"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_alignLeft="@id/dentistImageView"
             android:layout_alignBottom="@id/dentistImageView"
+            android:layout_alignLeft="@id/dentistImageView"
             android:gravity="bottom|left"
-            android:src="@drawable/ic_reorder_white_24dp"/>
+            android:src="@drawable/ic_reorder_black_24dp"/>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:orientation="vertical"
