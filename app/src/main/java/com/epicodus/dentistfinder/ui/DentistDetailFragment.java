@@ -23,6 +23,8 @@ import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -36,11 +38,16 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
     @Bind(R.id.bioTextView) TextView mBioTextView;
 
     private Dentist mDentist;
+    private ArrayList<Dentist> mDentists;
+    private int mPosition;
 
-    public static DentistDetailFragment newInstance(Dentist dentist) {
+    public static DentistDetailFragment newInstance(ArrayList<Dentist> dentists, Integer position) {
         DentistDetailFragment dentistDetailFragment = new DentistDetailFragment();
         Bundle args = new Bundle();
-        args.putParcelable("dentist", Parcels.wrap(dentist));
+
+        args.putParcelable(Constants.EXTRA_KEY_DENTISTS, Parcels.wrap(dentists));
+        args.putInt(Constants.EXTRA_KEY_POSITION, position);
+
         dentistDetailFragment.setArguments(args);
         return dentistDetailFragment;
     }
@@ -48,7 +55,9 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mDentist = Parcels.unwrap(getArguments().getParcelable("dentist"));
+        mDentists = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_DENTISTS));
+        mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
+        mDentist = mDentists.get(mPosition);
     }
 
 

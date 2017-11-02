@@ -2,6 +2,9 @@ package com.epicodus.dentistfinder.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -10,9 +13,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.epicodus.dentistfinder.Constants;
 import com.epicodus.dentistfinder.R;
 import com.epicodus.dentistfinder.models.Dentist;
 import com.epicodus.dentistfinder.ui.DentistDetailActivity;
+import com.epicodus.dentistfinder.ui.DentistDetailFragment;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -55,14 +60,22 @@ public class DentistListAdapter extends RecyclerView.Adapter<DentistListAdapter.
         @Bind(R.id.phoneTextView) TextView mPhoneTextView;
 
         private Context mContext;
+        private int mOrientation;
 
         public DentistViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+
             mContext = itemView.getContext();
             itemView.setOnClickListener(this);
 
+            mOrientation = itemView.getResources().getConfiguration().orientation;
+            if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                createDetailFragment(0);
+            }
+
         }
+
 
         public void bindDentist(Dentist dentist) {
             Picasso.with(mContext).load(dentist.getImageUrl()).into(mDentistImageView);
@@ -76,10 +89,21 @@ public class DentistListAdapter extends RecyclerView.Adapter<DentistListAdapter.
         @Override
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
-            Intent intent = new Intent(mContext, DentistDetailActivity.class);
-            intent.putExtra("position", itemPosition + "");
-            intent.putExtra("dentists", Parcels.wrap(mDentists));
-            mContext.startActivity(intent);
+            if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                createDetailFragment(itemPosition);
+            } else {
+                Intent intent = new Intent(mContext, DentistDetailActivity.class);
+                intent.putExtra(Constants.EXTRA_KEY_POSITION, itemPosition);
+                intent.putExtra(Constants.EXTRA_KEY_DENTISTS, Parcels.wrap(mDentists));
+                mContext.startActivity(intent);
+            }
+        }
+
+        private void createDetailFragment(int position) {
+            DentistDetailFragment detailFragment = DentistDetailFragment.newInstance(mDentists, position);
+            FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.dentistDetailContainer, detailFragment);
+            ft.commit();
         }
     }
 

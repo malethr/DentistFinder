@@ -13,23 +13,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:cropToPadding="false"
         android:layout_marginTop="30dp"
-        android:scaleType="fitStart"
-        app:srcCompat="@drawable/logo"/>
+        android:cropToPadding="false"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/logo"
+        android:layout_above="@+id/dentistFinderTextView"/>
 
     <TextView
         android:id="@+id/dentistFinderTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:text="DENTIST FINDER"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="@android:color/white"
+        android:layout_marginBottom="58dp"
+        android:visibility="visible"
         android:layout_above="@+id/findButton"
-        android:layout_marginBottom="150dp"
-        android:visibility="visible"/>
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:id="@+id/findButton"

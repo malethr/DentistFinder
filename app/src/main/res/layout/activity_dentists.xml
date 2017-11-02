@@ -7,9 +7,11 @@
     android:padding="5dp"
     tools:context="com.epicodus.dentistfinder.ui.DentistListActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recyclerView"/>
+    <fragment
+        android:id="@+id/fragmentDentistList"
+        android:name="com.epicodus.dentistfinder.ui.DentistListFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_dentist_list" />
 
 </RelativeLayout>

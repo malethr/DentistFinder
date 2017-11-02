@@ -29,10 +29,11 @@ public class DentistDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mDentists = Parcels.unwrap(getIntent().getParcelableExtra("dentists"));
-        int startingPosition = Integer.parseInt(getIntent().getStringExtra("position"));
+        int startingPosition = getIntent().getIntExtra("position", 0);
 
         adapterViewPager = new DentistPagerAdapter(getSupportFragmentManager(), mDentists);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);
+
     }
 }

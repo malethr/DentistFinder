@@ -18,6 +18,7 @@ public class Dentist {
     String zip;
     String bio;
     private String pushId;
+    String index;
 
     public Dentist(){}
 
@@ -32,6 +33,7 @@ public class Dentist {
         this.state = state;
         this.zip = zip;
         this.bio = bio;
+        this.index = "not_specified";
     }
 
     public String getFirstName() {
@@ -49,7 +51,6 @@ public class Dentist {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
 
     public String getWebsite() {
         return website;
@@ -81,6 +82,14 @@ public class Dentist {
 
     public void setStreet(String street) {
         this.street = street;
+    }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
     }
 
     public String getCity() {

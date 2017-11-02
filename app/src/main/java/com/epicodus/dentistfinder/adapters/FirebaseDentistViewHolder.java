@@ -1,10 +1,13 @@
 package com.epicodus.dentistfinder.adapters;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +16,7 @@ import com.epicodus.dentistfinder.Constants;
 import com.epicodus.dentistfinder.R;
 import com.epicodus.dentistfinder.models.Dentist;
 import com.epicodus.dentistfinder.ui.DentistDetailActivity;
+import com.epicodus.dentistfinder.util.ItemTouchHelperViewHolder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +31,7 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class FirebaseDentistViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class FirebaseDentistViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder{
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
     public ImageView dentistImageView;
@@ -39,7 +43,6 @@ public class FirebaseDentistViewHolder extends RecyclerView.ViewHolder implement
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
-        itemView.setOnClickListener(this);
     }
 
     public void bindDentist(Dentist dentist) {
@@ -61,29 +64,19 @@ public class FirebaseDentistViewHolder extends RecyclerView.ViewHolder implement
     }
 
     @Override
-    public void onClick(View view) {
-        final ArrayList<Dentist> dentists = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(Constants.FIREBASE_CHILD_DENTISTS);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    dentists.add(snapshot.getValue(Dentist.class));
-                }
+    public void onItemSelected() {
+        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
+                R.animator.drag_scale_on);
+        set.setTarget(itemView);
+        set.start();
+    }
 
-                int itemPosition = getLayoutPosition();
-
-                Intent intent = new Intent(mContext, DentistDetailActivity.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("dentists", Parcels.wrap(dentists));
-
-                mContext.startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
+    @Override
+    public void onItemClear() {
+        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
+                R.animator.drag_scale_off);
+        set.setTarget(itemView);
+        set.start();
     }
 }
 
