@@ -47,7 +47,7 @@ public class SavedDentistListActivity extends AppCompatActivity {
 
     private void setUpFirebaseAdapter() {
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Dentist, FirebaseDentistViewHolder>
-                (Dentist.class, R.layout.dentist_list_item, FirebaseDentistViewHolder.class,
+                (Dentist.class, R.layout.dentist_list_item_drag, FirebaseDentistViewHolder.class,
                         mDentistReference) {
 
             @Override

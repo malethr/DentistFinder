@@ -64,18 +64,10 @@ public class FirebaseDentistViewHolder extends RecyclerView.ViewHolder implement
         final ArrayList<Dentist> dentists = new ArrayList<>();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(Constants.FIREBASE_CHILD_DENTISTS);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            String uid = user.getUid();
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     dentists.add(snapshot.getValue(Dentist.class));
-                    Iterator<DataSnapshot> iterator = snapshot.getChildren().iterator();
-                    if(snapshot.getKey().equals(uid)) {
-                        while (iterator.hasNext())
-                            dentists.add(iterator.next().getValue(Dentist.class));
-
-                    }
                 }
 
                 int itemPosition = getLayoutPosition();
