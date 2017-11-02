@@ -40,13 +40,15 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
     private Dentist mDentist;
     private ArrayList<Dentist> mDentists;
     private int mPosition;
+    private String mSource;
 
-    public static DentistDetailFragment newInstance(ArrayList<Dentist> dentists, Integer position) {
+    public static DentistDetailFragment newInstance(ArrayList<Dentist> dentists, Integer position, String source) {
         DentistDetailFragment dentistDetailFragment = new DentistDetailFragment();
         Bundle args = new Bundle();
 
         args.putParcelable(Constants.EXTRA_KEY_DENTISTS, Parcels.wrap(dentists));
         args.putInt(Constants.EXTRA_KEY_POSITION, position);
+        args.putString(Constants.KEY_SOURCE, source);
 
         dentistDetailFragment.setArguments(args);
         return dentistDetailFragment;
@@ -58,6 +60,8 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
         mDentists = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_DENTISTS));
         mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
         mDentist = mDentists.get(mPosition);
+        mSource = getArguments().getString(Constants.KEY_SOURCE);
+        setHasOptionsMenu(true);
     }
 
 
@@ -65,6 +69,13 @@ public class DentistDetailFragment extends Fragment implements View.OnClickListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dentist_detail, container, false);
         ButterKnife.bind(this, view);
+
+        if (mSource.equals(Constants.SOURCE_SAVED)) {
+            mSaveDentistButton.setVisibility(View.GONE);
+        } else {
+            // This line of code should already exist. Make sure it now resides in this conditional:
+            mSaveDentistButton.setOnClickListener(this);
+        }
 
         Picasso.with(view.getContext())
                 .load(mDentist.getImageUrl())

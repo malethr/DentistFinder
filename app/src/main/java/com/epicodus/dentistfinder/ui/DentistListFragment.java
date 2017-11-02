@@ -1,6 +1,7 @@
 package com.epicodus.dentistfinder.ui;
 
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -21,6 +22,7 @@ import com.epicodus.dentistfinder.R;
 import com.epicodus.dentistfinder.adapters.DentistListAdapter;
 import com.epicodus.dentistfinder.models.Dentist;
 import com.epicodus.dentistfinder.services.BetterDoctorService;
+import com.epicodus.dentistfinder.util.OnDentistSelectedListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,7 +42,18 @@ public class DentistListFragment extends Fragment {
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private String mRecentAddress;
+    private OnDentistSelectedListener mOnDentistSelectedListener;
 
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mOnDentistSelectedListener = (OnDentistSelectedListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + e.getMessage());
+        }
+    }
 
     public DentistListFragment() {
         // Required empty public constructor
@@ -122,7 +135,7 @@ public class DentistListFragment extends Fragment {
 
                     @Override
                     public void run() {
-                        mAdapter = new DentistListAdapter(getActivity(), mDentists);
+                        mAdapter = new DentistListAdapter(getActivity(), mDentists, mOnDentistSelectedListener);
                         // Line above states `getActivity()` instead of previous
                         // 'getApplicationContext()' because fragments do not have own context,
                         // must instead inherit it from corresponding activity.

@@ -103,6 +103,7 @@ public class FirebaseDentistListAdapter extends FirebaseRecyclerAdapter<Dentist,
                     Intent intent = new Intent(mContext, DentistDetailActivity.class);
                     intent.putExtra(Constants.EXTRA_KEY_POSITION, itemPosition);
                     intent.putExtra(Constants.EXTRA_KEY_DENTISTS, Parcels.wrap(mDentists));
+                    intent.putExtra(Constants.KEY_SOURCE, Constants.SOURCE_SAVED);
                     mContext.startActivity(intent);
                 }
             }
@@ -139,7 +140,7 @@ public class FirebaseDentistListAdapter extends FirebaseRecyclerAdapter<Dentist,
     }
 
     private void createDetailFragment(int position) {
-        DentistDetailFragment detailFragment = DentistDetailFragment.newInstance(mDentists, position);
+        DentistDetailFragment detailFragment = DentistDetailFragment.newInstance(mDentists, position, Constants.SOURCE_SAVED);
         FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.dentistDetailContainer, detailFragment);
         ft.commit();
