@@ -33,7 +33,7 @@ _Ask user's input for either zip code, dentist name or insurance then program wi
 ![image of dentist homeL](https://github.com/malethr/DentistFinder/blob/master/screenshots/homeL.png)
 ![image of dentist loginL](https://github.com/malethr/DentistFinder/blob/master/screenshots/loginL.png)
 ![image of dentist listL](https://github.com/malethr/DentistFinder/blob/master/screenshots/listL.png)
-![image of dentist savedL](https://github.com/malethr/DentistFinder/blob/master/screenshots/savedList.png)
+![image of dentist savedL](https://github.com/malethr/DentistFinder/blob/master/screenshots/savedListL.png)
 
 
 ## Future Development
