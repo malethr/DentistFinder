@@ -20,14 +20,20 @@ _Ask user's input for either zip code, dentist name or insurance then program wi
 | Program will ask for display list of dentist based on user's input of insurance  | Metlife | Matthew Aldridge, Benjamin .....|
 | Program will save chosen dentist when save button is clicked  | Matthew Aldridge clicked save button| Matthew Aldridge - saved|
 
-## Initial Screenshots
+## Screenshots
 
 ![image of dentist create](https://github.com/malethr/DentistFinder/blob/master/screenshots/create.png)
 ![image of dentist home](https://github.com/malethr/DentistFinder/blob/master/screenshots/home.png)
 ![image of dentist login](https://github.com/malethr/DentistFinder/blob/master/screenshots/login.png)
 ![image of dentist list](https://github.com/malethr/DentistFinder/blob/master/screenshots/list.png)
 ![image of dentist detail](https://github.com/malethr/DentistFinder/blob/master/screenshots/detail.png)
-![image of dentist saved](https://github.com/malethr/DentistFinder/blob/master/screenshots/saved.png)
+![image of dentist saved](https://github.com/malethr/DentistFinder/blob/master/screenshots/savedList.png)
+
+![image of dentist createL](https://github.com/malethr/DentistFinder/blob/master/screenshots/createL.png)
+![image of dentist homeL](https://github.com/malethr/DentistFinder/blob/master/screenshots/homeL.png)
+![image of dentist loginL](https://github.com/malethr/DentistFinder/blob/master/screenshots/loginL.png)
+![image of dentist listL](https://github.com/malethr/DentistFinder/blob/master/screenshots/listL.png)
+![image of dentist savedL](https://github.com/malethr/DentistFinder/blob/master/screenshots/savedList.png)
 
 
 ## Future Development
