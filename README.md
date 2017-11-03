@@ -19,7 +19,7 @@ _Ask user's input for either zip code, dentist name or insurance then program wi
 | Program will ask for display list of dentist based on user's input of Dentist  | Matt | Matthew Aldridge |
 | Program will ask for display list of dentist based on user's input of insurance  | Metlife | Matthew Aldridge, Benjamin .....|
 | Program will save chosen dentist when save button is clicked  | Matthew Aldridge clicked save button| Matthew Aldridge - saved|
-| Program will reorder saved list when drag up and down | [1]Matthew Aldridge [2] | Matthew Aldridge - saved|
+| Program will reorder saved list when drag up and down | [1]Matthew Aldridge [2]Karl Smith | [1]Karl Smith [2]Matthew Aldridge|
 
 ## Screenshots
 
