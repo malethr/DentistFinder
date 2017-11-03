@@ -45,18 +45,8 @@ public class DentistListFragment extends Fragment {
     private OnDentistSelectedListener mOnDentistSelectedListener;
 
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        try {
-            mOnDentistSelectedListener = (OnDentistSelectedListener) context;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + e.getMessage());
-        }
-    }
 
     public DentistListFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -84,6 +74,39 @@ public class DentistListFragment extends Fragment {
         return view;
     }
 
+
+
+
+
+    public void getDentists(String location) {
+        final BetterDoctorService betterDoctorService = new BetterDoctorService();
+
+        betterDoctorService.findDentists(location, new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) {
+                mDentists = betterDoctorService.processResults(response);
+
+                getActivity().runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        mAdapter = new DentistListAdapter(getActivity(), mDentists, mOnDentistSelectedListener);
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
+                    }
+                });
+            }
+        });
+    }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -109,54 +132,25 @@ public class DentistListFragment extends Fragment {
         });
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
 
-
-    public void getDentists(String location) {
-        final BetterDoctorService betterDoctorService = new BetterDoctorService();
-
-        betterDoctorService.findDentists(location, new Callback() {
-
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) {
-                mDentists = betterDoctorService.processResults(response);
-
-                getActivity().runOnUiThread(new Runnable() {
-                    // Line above states 'getActivity()' instead of previous 'RestaurantListActivity.this'
-                    // because fragments do not have own context, and must inherit from corresponding activity.
-
-                    @Override
-                    public void run() {
-                        mAdapter = new DentistListAdapter(getActivity(), mDentists, mOnDentistSelectedListener);
-                        // Line above states `getActivity()` instead of previous
-                        // 'getApplicationContext()' because fragments do not have own context,
-                        // must instead inherit it from corresponding activity.
-
-                        mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                        // Line above states 'new LinearLayoutManager(getActivity());' instead of previous
-                        // 'new LinearLayoutManager(RestaurantListActivity.this);' when method resided
-                        // in RestaurantListActivity because Fragments do not have context
-                        // and must instead inherit from corresponding activity.
-
-                        mRecyclerView.setLayoutManager(layoutManager);
-                        mRecyclerView.setHasFixedSize(true);
-                    }
-                });
-            }
-        });
-    }
-
     private void addToSharedPreferences(String inputSearch) {
         mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, inputSearch).apply();
+    }
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mOnDentistSelectedListener = (OnDentistSelectedListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + e.getMessage());
+        }
     }
 
 }

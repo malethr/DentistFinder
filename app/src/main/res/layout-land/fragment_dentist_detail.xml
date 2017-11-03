@@ -13,18 +13,17 @@
 
         <ImageView
             android:id="@+id/dentistImageView"
-            android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_width="577dp"
+            android:layout_height="125dp"
             android:scaleType="centerCrop"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="105dp"
+            android:layout_height="65dp"
             android:background="@android:color/white"
-            android:paddingBottom="20dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:paddingTop="20dp">
+            >
 
             <TextView
                 android:id="@+id/dentistNameTextView"
@@ -41,14 +40,14 @@
                 android:id="@+id/addressTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/dentistNameTextView"
                 android:layout_weight="1.20"
                 android:gravity="center_vertical"
                 android:text="123 SW Best Ever Ave"
                 android:textSize="15sp"
-                android:textStyle="bold"
-                android:layout_below="@+id/dentistNameTextView"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
+                android:textStyle="bold"/>
 
             <ImageView
                 android:id="@+id/callImageView"
@@ -69,13 +68,16 @@
 
         <ScrollView
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
-            android:layout_height="120dp"
-            android:fillViewport="true">
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/scrollView"
+            android:fillViewport="true"
+            android:layout_above="@+id/savedDentistsButton">
 
             <RelativeLayout
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
+                android:id="@+id/rel"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -109,21 +111,24 @@
 
             </RelativeLayout>
         </ScrollView>
-
-        <RelativeLayout
+        <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/saveDentistButton"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
 
-            <Button
-                android:id="@+id/saveDentistButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
-                android:text="Save Dentist"
-                android:textColor="@color/colorPrimaryText"
-                android:layout_alignParentBottom="true"
-                android:textSize="15sp"/></RelativeLayout>
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorAccent"
+            android:paddingBottom="0dp"
+            android:text="Save Dentist"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="15sp"/>
+        </RelativeLayout>
 
     </LinearLayout>
+
+
 
 </FrameLayout>
