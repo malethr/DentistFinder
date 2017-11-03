@@ -56,7 +56,7 @@ public class FirebaseDentistViewHolder extends RecyclerView.ViewHolder implement
                 .centerCrop()
                 .into(dentistImageView);
 
-        nameTextView.setText(dentist.getFirstName());
+        nameTextView.setText(dentist.getFirstName() + " " + dentist.getLastName());
         String phoneNum = TextUtils.join("",dentist.getPhone());
         phoneNum ="("+phoneNum.substring(0,3)+")" + phoneNum.substring(3,6)+"-"+ phoneNum.substring(6, phoneNum.length());
         phoneTextView.setText(phoneNum);

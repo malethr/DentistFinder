@@ -19,6 +19,7 @@ _Ask user's input for either zip code, dentist name or insurance then program wi
 | Program will ask for display list of dentist based on user's input of Dentist  | Matt | Matthew Aldridge |
 | Program will ask for display list of dentist based on user's input of insurance  | Metlife | Matthew Aldridge, Benjamin .....|
 | Program will save chosen dentist when save button is clicked  | Matthew Aldridge clicked save button| Matthew Aldridge - saved|
+| Program will reorder saved list when drag up and down | [1]Matthew Aldridge [2] | Matthew Aldridge - saved|
 
 ## Screenshots
 
@@ -28,9 +29,8 @@ _Ask user's input for either zip code, dentist name or insurance then program wi
 ![image of dentist list](https://github.com/malethr/DentistFinder/blob/master/screenshots/list.png)
 ![image of dentist detail](https://github.com/malethr/DentistFinder/blob/master/screenshots/detail.png)
 ![image of dentist saved](https://github.com/malethr/DentistFinder/blob/master/screenshots/savedList.png)
-
-![image of dentist createL](https://github.com/malethr/DentistFinder/blob/master/screenshots/createL.png)
 ![image of dentist homeL](https://github.com/malethr/DentistFinder/blob/master/screenshots/homeL.png)
+![image of dentist createL](https://github.com/malethr/DentistFinder/blob/master/screenshots/createL.png)
 ![image of dentist loginL](https://github.com/malethr/DentistFinder/blob/master/screenshots/loginL.png)
 ![image of dentist listL](https://github.com/malethr/DentistFinder/blob/master/screenshots/listL.png)
 ![image of dentist savedL](https://github.com/malethr/DentistFinder/blob/master/screenshots/savedListL.png)
@@ -38,9 +38,7 @@ _Ask user's input for either zip code, dentist name or insurance then program wi
 
 ## Future Development
 * _Able to use google maps and can access user's location using geolocation_
-* _Provide a login and sign-up form._
 * _Can accept reviews from patients and can accept bookings._
-* _Will add more detail information (ex. Bio)_
 
 
 ## Setup/Installation Requirements
